@@ -402,7 +402,11 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
 .ans .srcs{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
 .ans .caret::after{content:"▍";animation:blink 1s infinite;color:var(--violet)}
 @keyframes blink{50%{opacity:0}}
-.callout{grid-column:1/-1;display:flex;align-items:center;gap:.6rem;margin:.45rem 0 .2rem;padding:.5rem .75rem;font-size:.86rem;border:none;width:100%;text-align:start;animation:fadein .3s ease;line-height:1.35}
+.callout{grid-column:1/-1;display:flex;align-items:center;gap:.7rem;margin:.6rem 0 .3rem;padding:.75rem 1rem;font-size:.98rem;border:none;width:100%;text-align:start;animation:slidedown .45s ease;line-height:1.35;cursor:pointer}
+.callout>.ico{font-size:1.45rem!important}
+@keyframes slidedown{from{opacity:0;transform:translateY(-.6rem);max-height:0}to{opacity:1;transform:none;max-height:6rem}}
+.spot-ring{animation:ring 1.4s ease-out infinite!important}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(242,183,5,.95),0 0 0 0 rgba(242,183,5,.5)}70%{box-shadow:0 0 0 .35rem rgba(242,183,5,.9),0 0 0 1.2rem rgba(242,183,5,0)}100%{box-shadow:0 0 0 .35rem rgba(242,183,5,.9),0 0 0 1.2rem rgba(242,183,5,0)}}
 .callout .lab{display:none}
 .mode-a .callout{background:var(--night);color:#ffe8e1;border-radius:.5rem;box-shadow:0 .3rem .9rem rgba(0,0,0,.25);border-inline-start:.35rem solid #ff8f73}
 .mode-a .callout .lab{display:inline-flex;align-items:center;gap:.25rem;color:#9fc0bb;font-size:.72rem;font-weight:700;margin-inline-end:.4rem}
@@ -1245,6 +1249,7 @@ async function run(trigger){
   if(m.length)stats.onShown(key());
 }
 var acked=false;
+function spotlight(){var c=document.querySelector('.callout');if(c)c.classList.add('spot-ring');var bl=ctx.mode==='A'?agent:$('tbBulb');if(bl&&matches.length)bl.classList.add('spot-ring');}
 function clearCallout(){document.querySelectorAll('.callout').forEach(function(e){e.remove();});}
 function showCallout(m){
   clearCallout();
@@ -1263,7 +1268,7 @@ function isCrit(m){return m.some(function(x){return x.sev==='high'&&x.when;});}
 function paintBulb(fresh){
   var m=matches,crit=isCrit(m),n=m.length;
   // mode A – floating agent
-  agent.classList.remove('on','crit','flash','tip','alarm');void agent.offsetWidth;
+  agent.classList.remove('on','crit','flash','tip','alarm','spot-ring');void agent.offsetWidth;
   $('agentBadge').hidden=!n;$('agentBadge').textContent=n;
   if(n){agent.classList.add('on');if(crit){agent.classList.add('crit');if(!acked)agent.classList.add('alarm');}}
   agent.setAttribute('aria-label',n?'InSight: '+n+' תובנות':'InSight: אין תובנות');
@@ -1271,7 +1276,7 @@ function paintBulb(fresh){
   var ta=$('trayAgent');if(ta){ta.classList.toggle('on',!!n);ta.classList.toggle('crit',crit);}
   // mode B – toolbar button
   var tb=$('tbBulb');
-  if(tb){tb.classList.remove('on','crit','flash','alarm');void tb.offsetWidth;var bb=tb.querySelector('.bb');bb.hidden=!n;bb.textContent=n;if(n){tb.classList.add('on');if(crit){tb.classList.add('crit');if(!acked)tb.classList.add('alarm');}}}
+  if(tb){tb.classList.remove('on','crit','flash','alarm','spot-ring');void tb.offsetWidth;var bb=tb.querySelector('.bb');bb.hidden=!n;bb.textContent=n;if(n){tb.classList.add('on');if(crit){tb.classList.add('crit');if(!acked)tb.classList.add('alarm');}}}
   if(fresh&&n){
     if(ctx.mode==='A'){agent.classList.add('flash','tip');setTimeout(function(){agent.classList.remove('tip');},2600);}
     else if(tb)tb.classList.add('flash');
@@ -1302,7 +1307,7 @@ function placePanel(){
 }
 function openPanel(){
   panelOpen=true;placePanel();renderPanel();$('askOut').innerHTML='';$('askIn').value='';panel.hidden=false;
-  agent.classList.remove('tip','alarm');acked=true;var tb=$('tbBulb');if(tb)tb.classList.remove('alarm');
+  agent.classList.remove('tip','alarm');acked=true;document.querySelectorAll('.spot-ring').forEach(function(e){e.classList.remove('spot-ring');});var tb=$('tbBulb');if(tb)tb.classList.remove('alarm');
   pipe.set(5,'החלון נפתח');pipe.done(5);
   stats.onOpen();
 }
@@ -1402,7 +1407,7 @@ var SIM=[
   r:async function(ok){setMode('A');await goScreen('emr','dashboard');}},
  {t:'קבלת מטופלת חדשה',
   w:'מיכל פותחת את מסך הקבלה של רחל לוי, בת 78. הכלי מזהה את המסך ואת גיל המטופלת, והנורה נדלקת עם 3 תובנות.',
-  y:'אף אחד לא חיפש כלום. הידע הגיע לבד, למסך שבו עובדים.',
+  y:'אף אחד לא חיפש כלום. הידע הגיע לבד, למסך שבו עובדים. נורה צהובה היא סימון שקט, בלי פס. פס מופיע רק ברגע בטיחותי, כמו שנראה בצעד 6.',
   r:async function(ok){setMode('A');await goScreen('emr','admission');}},
  {t:'לחיצה אחת: מה בית החולים יודע',
   w:'לחיצה על הנורה פותחת תקציר קצר, מקור, תאריך וקישור למסמך המלא. התגית "גיל 78" מראה שהתובנה הותאמה למטופלת, ומוצגים רק פריטים שמתאימים לתפקיד (אחות) ולמחלקה.',
@@ -1417,11 +1422,11 @@ var SIM=[
   y:'אותו מסך מציג ידע שונה לכל מטופל. זה ההבדל בין פורטל נהלים לבין ידע בהקשר.',
   r:async function(ok){setMode('A');await goScreen('lab','results');if(!ok())return;await wait(400);if(!ok())return;openPanel();}},
  {t:'רגע קריטי: אשלגן לווריד',
-  w:'מיכל בוחרת אשלגן כלורי לווריד. הנורה מאדימה ומהבהבת, ופס קצר מופיע ליד השדה, בלי לחסום. ה-AI הוסיף לקח שמקשר לתוצאות המעבדה.',
+  w:'מיכל בוחרת אשלגן כלורי לווריד. <b>שימו לב לשני דברים:</b><ul><li>הנורה בפינה הפכה <b>אדומה ומהבהבת</b></li><li>מתחת לשדה התרופה הופיע <b>פס עם הלקח</b></li></ul>העבודה לא נחסמת. לחיצה על הפס או על הנורה פותחת את הפרטים.',
   y:'לקח מתחקיר שנכתב לפני חצי שנה מגיע בדיוק לרגע שבו האירוע עלול לחזור.',
   r:async function(ok){setMode('A');await goScreen('emr','meds');if(!ok())return;await wait(700);if(!ok())return;
     var d=$('drug');d.classList.add('attn');d.value='kcl';ctx.drug='kcl';await run('נבחרה תרופה: אשלגן כלורי לווריד');if(!ok())return;
-    await wait(2200);if(!ok())return;openPanel();}},
+    await wait(250);if(!ok())return;spotlight();}},
  {t:'שאלה חופשית לנהלים',
   w:'מיכל רוצה לוודא את קצב המתן. היא שואלת בתוך חלון הנורה, וה-AI הפנימי עונה רק מתוך מסמכי בית החולים, עם הפניה לסעיף.',
   y:'המודל רץ על שרת בתוך הרשת הפנימית. השאלה והתשובה לא יוצאות מבית החולים.',
@@ -1432,10 +1437,10 @@ var SIM=[
   r:async function(ok){setMode('A');await goScreen('emr','meds',{drug:'kcl'});if(!ok())return;openPanel();await wait(900);if(!ok())return;
     if(stats.rated['T-031']){var el=$('pList').querySelector('[data-id="T-031"]');if(el)el.classList.add('lit');}else rate('T-031',1);}},
  {t:'הכנה לפרוצדורה',
-  w:'רחל מיועדת לניקוז נוזל פלאורלי מחר. נוהל ה-Time-out מופיע תמיד. כשמיכל מסמנת שהמטופלת נוטלת נוגדי קרישה, הנורה מאדימה, מופיע פס ליד הסימון, ותחקיר עולה לראש הרשימה.',
+  w:'רחל מיועדת לניקוז נוזל פלאורלי מחר. נוהל ה-Time-out מופיע תמיד. כשמיכל מסמנת שהמטופלת נוטלת נוגדי קרישה, הנורה מאדימה ו<b>מופיע פס מתחת לסימון</b>. בחלון, התחקיר עולה לראש הרשימה.',
   y:'ככל שמזינים יותר מידע, ההתאמה מדויקת יותר. בלי שאף אחד יגדיר זאת ידנית בכל פעם.',
   r:async function(ok){setMode('A');await goScreen('emr','proc');if(!ok())return;await wait(900);if(!ok())return;
-    $('acLabel').classList.add('attn');$('ac').checked=true;ctx.anticoag=true;await run('סומן: נוטלת נוגדי קרישה');if(!ok())return;await wait(1800);if(!ok())return;openPanel();}},
+    $('acLabel').classList.add('attn');$('ac').checked=true;ctx.anticoag=true;await run('סומן: נוטלת נוגדי קרישה');if(!ok())return;await wait(250);if(!ok())return;spotlight();await wait(3200);if(!ok())return;openPanel();}},
  {t:'שחרור הביתה',
   w:'במכתב השחרור עולה ראשון לקח מתחקיר אשפוז חוזר: להשוות את התרופות מהבית לתרופות בשחרור. בטבלה כבר רואים שורה שלא מולאה.',
   y:'השלב שבו דברים "נופלים בין הכיסאות" מקבל בדיוק את הלקחים שנכתבו עליו.',
