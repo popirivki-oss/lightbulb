@@ -183,7 +183,65 @@ bdi.ltr{direction:ltr;unicode-bidi:isolate}
   background:radial-gradient(120% 90% at 70% 10%,#2c6a86 0%,#174a63 45%,#0d2f42 100%)}
 .win{position:absolute;inset:.7rem .7rem 3.2rem .7rem;display:grid;grid-template-rows:auto auto auto auto 1fr auto;background:#f0f0f0;border:1px solid #5a6a78;box-shadow:0 .6rem 1.6rem rgba(0,0,0,.35);--acc:#1f4f82;--acc2:#3a72ad}
 .win[data-sys="nursing"]{--acc:#1d6448;--acc2:#2e8a64}
-.win[data-sys="lab"]{--acc:#55396f;--acc2:#7b5b9b}
+.win[data-sys="lab"]{--acc:#0a246a;--acc2:#3a6ea5}
+/* nursing: modern web app inside a browser */
+.win[data-sys="nursing"] .w-title{background:#dfe3e8;color:#222;height:2.2rem;padding:.35rem .5rem 0;align-items:flex-end}
+.br-tab{display:flex;align-items:center;gap:.45rem;background:#fff;border-radius:.5rem .5rem 0 0;padding:.35rem 1rem;height:100%;font-size:.78rem;font-weight:600;max-width:24rem;white-space:nowrap;overflow:hidden}
+.br-tab .ico{color:var(--acc2)}
+.br-new{color:#555;padding:0 .5rem;align-self:center}
+.win[data-sys="nursing"] .w-title .wb{color:#333;align-self:stretch;margin-top:-.35rem}
+.win[data-sys="nursing"] .w-title .wb span:last-child:hover{color:#fff}
+.win[data-sys="nursing"] .w-menu{background:#fff;padding:.3rem .6rem;border-bottom:1px solid #dcdcdc;gap:.7rem;align-items:center;color:#555}
+.win[data-sys="nursing"] .w-menu .ico{font-size:1rem}
+.addr{flex:1;display:flex;align-items:center;gap:.4rem;background:#f1f3f4;border-radius:99px;padding:.25rem .9rem;font-size:.8rem;color:#333}
+.addr bdi{direction:ltr;unicode-bidi:isolate}
+.addr .ico{color:#1d6448}
+.win[data-sys="nursing"] .w-tools{background:#1d6448;border:none;min-height:2.7rem;padding:.25rem .6rem}
+.win[data-sys="nursing"] .tb{color:#fff;border-radius:.45rem}
+.win[data-sys="nursing"] .tb .ico{color:#bfe8d4}
+.win[data-sys="nursing"] .tb:hover{background:rgba(255,255,255,.12);border-color:transparent}
+.win[data-sys="nursing"] .tb-sep{background:rgba(255,255,255,.25)}
+.win[data-sys="nursing"] .tb-bulb{color:#222;border-radius:.45rem}
+.win[data-sys="nursing"] .w-banner{background:#eef7f2;border-bottom-color:#cfe6da}
+.win[data-sys="nursing"] .w-banner .ph{border-radius:50%;background:#d7ece1;border-color:#b5d8c5;color:#1d6448}
+.win[data-sys="nursing"] .w-banner .alg{border-radius:99px}
+.win[data-sys="nursing"] .w-nav{background:#fff}
+.win[data-sys="nursing"] .w-nav .gh{border:none}
+.win[data-sys="nursing"] .w-nav button{border-radius:.45rem;margin:.1rem .4rem;width:calc(100% - .8rem)}
+.win[data-sys="nursing"] .w-nav button.on{background:#e3f3ea;border-color:transparent;color:#1d6448}
+.win[data-sys="nursing"] .sh{background:none;border:none;border-bottom:2px solid #2e8a64;color:#1d6448;font-size:1rem;padding-inline:0}
+.win[data-sys="nursing"] .grid th{background:#f3f7f5;border-color:#e1e8e4}
+.win[data-sys="nursing"] .grid td{border-color:#e9eeeb}
+.win[data-sys="nursing"] .grid tr:nth-child(even) td{background:#fbfdfc}
+.win[data-sys="nursing"] fieldset.fs{border-radius:.5rem;border-color:#d5e2db}
+.win[data-sys="nursing"] .score{border-radius:.4rem}
+.win[data-sys="nursing"] .cb input{accent-color:#2e8a64}
+.win[data-sys="nursing"] .w-status{background:#f6f8f7;border-top-color:#e1e8e4}
+/* lab: older, dense desktop program */
+.win[data-sys="lab"]{background:#d4d0c8;border-color:#404040}
+.win[data-sys="lab"] .w-title{background:linear-gradient(270deg,#0a246a,#3a6ea5);font-weight:700}
+.win[data-sys="lab"] .w-menu{background:#d4d0c8;border-bottom-color:#a0a0a0}
+.win[data-sys="lab"] .w-menu span:hover{background:#0a246a;color:#fff}
+.win[data-sys="lab"] .w-tools{background:#d4d0c8;border-bottom-color:#a0a0a0}
+.win[data-sys="lab"] .tb{border:1px solid;border-color:#fff #808080 #808080 #fff;border-radius:0;flex-direction:row;min-width:0;padding:.15rem .55rem;gap:.35rem}
+.win[data-sys="lab"] .tb-bulb{background:#fff}
+.win[data-sys="lab"] .w-banner{background:#ffffe1;border-bottom-color:#a0a0a0}
+.win[data-sys="lab"] .w-banner .ph{background:#d4d0c8;border-color:#808080;color:#555}
+.win[data-sys="lab"] .w-body{background:#d4d0c8}
+.win[data-sys="lab"] .w-nav{background:#fff;border:2px inset #d4d0c8;margin:.3rem 0 .3rem .3rem}
+.win[data-sys="lab"] .w-nav button.on{background:#0a246a;color:#fff;border-color:#0a246a}
+.win[data-sys="lab"] .w-nav button.on .ico{color:#fff}
+.win[data-sys="lab"] .w-content{background:#fff;border:2px inset #d4d0c8;margin:.3rem}
+.win[data-sys="lab"] .sh{background:#0a246a;color:#fff;border:none}
+.win[data-sys="lab"] .sh .r{color:#cdd6ff}
+.win[data-sys="lab"] .grid{font-size:.82rem}
+.win[data-sys="lab"] .grid td{font-family:var(--mono)}
+.win[data-sys="lab"] .grid td:first-child{font-family:var(--font)}
+.win[data-sys="lab"] .grid th{background:#d4d0c8;border:1px solid;border-color:#fff #808080 #808080 #fff;font-family:var(--font)}
+.win[data-sys="lab"] .grid tr:nth-child(even) td{background:#f4f4f4}
+.win[data-sys="lab"] .grid tr.sel td{background:#fff3c4}
+.win[data-sys="lab"] .w-status{background:#d4d0c8;border-top-color:#808080}
+.win[data-sys="lab"] .w-status span{border-style:inset;border-width:0 1px 0 0}
 .w-title{display:flex;align-items:center;gap:.5rem;height:1.9rem;padding-inline:.6rem 0;background:linear-gradient(180deg,var(--acc2),var(--acc));color:#fff;font-size:.82rem;font-weight:600}
 .w-title .ico{font-size:1rem}
 .w-title .wb{margin-inline-start:auto;display:flex;height:100%}
@@ -338,6 +396,17 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
 .ans .srcs{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
 .ans .caret::after{content:"▍";animation:blink 1s infinite;color:var(--violet)}
 @keyframes blink{50%{opacity:0}}
+.callout{grid-column:1/-1;display:flex;align-items:center;gap:.6rem;margin:.45rem 0 .2rem;padding:.5rem .75rem;font-size:.86rem;border:none;width:100%;text-align:start;animation:fadein .3s ease;line-height:1.35}
+.callout .lab{display:none}
+.mode-a .callout{background:var(--night);color:#ffe8e1;border-radius:.5rem;box-shadow:0 .3rem .9rem rgba(0,0,0,.25);border-inline-start:.35rem solid #ff8f73}
+.mode-a .callout .lab{display:inline-flex;align-items:center;gap:.25rem;color:#9fc0bb;font-size:.72rem;font-weight:700;margin-inline-end:.4rem}
+.mode-a .callout>.ico{color:#ff8f73;font-size:1.2rem}
+.mode-b .callout{background:#fde9e4;color:#8a2615;border:1px solid #d0543b}
+.mode-b .callout>.ico{color:#c0402a;font-size:1.15rem}
+.callout .go{margin-inline-start:auto;font-weight:800;white-space:nowrap;display:inline-flex;align-items:center;gap:.2rem}
+@keyframes fadein{from{opacity:0;transform:translateY(-.3rem)}to{opacity:1;transform:none}}
+.agent.crit.alarm .bulb-ico{animation:pulse 1.3s ease-out infinite}
+.tb-bulb.crit.alarm{animation:pulse 1.3s ease-out infinite}
 .toast{position:absolute;z-index:8;bottom:3.4rem;left:50%;transform:translate(-50%,.5rem);background:#1d2b30;color:#fff;padding:.55rem 1rem;border-radius:.5rem;font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:.4rem;opacity:0;pointer-events:none;transition:all .25s;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
@@ -348,7 +417,7 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
 .stepper div.on{border-color:var(--teal);color:var(--ink);box-shadow:0 0 0 3px var(--teal-tint)}
 .stepper div.on .n,.stepper div.done .n{background:var(--teal);color:#fff}
 .stepper div.done{color:var(--ink)}
-.ing{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:1.2rem;margin-top:1.2rem}
+.ing{display:grid;grid-template-columns:.95fr 1.35fr .9fr;gap:1.2rem;margin-top:1.2rem}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.3rem 1.4rem;transition:opacity .3s}
 .card.dim{opacity:.38}
 .card h3{display:flex;align-items:center;gap:.55rem;font-size:1.2rem;margin-bottom:.9rem}
@@ -359,7 +428,7 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
 .doc .red{background:#222;color:#222;border-radius:2px;padding:0 .2rem}
 .doc .mk{background:#fff1b8}
 .doc-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;font-size:.85rem;color:var(--ink-3)}
-.af{display:grid;grid-template-columns:7.5rem 1fr;gap:.5rem .8rem;font-size:1rem;align-items:start}
+.af{display:grid;grid-template-columns:7.5rem 1fr;gap:.4rem .8rem;font-size:.98rem;align-items:start}
 .af dt{color:var(--ink-3);font-weight:600;font-size:.92rem}
 .af dd{margin:0;min-height:1.5rem}
 .af dd .tg{font-size:.85rem;padding:.12rem .55rem}
@@ -375,6 +444,14 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
 .pub{border:2px solid var(--teal);background:var(--teal-tint);border-radius:.7rem;padding:.8rem 1rem;font-weight:700;color:var(--teal);display:flex;gap:.5rem;align-items:flex-start}
 .mini{border:1px solid var(--line);border-radius:.6rem;padding:.7rem .85rem;background:#fff;position:relative;font-size:.92rem}
 .mini::before{content:"";position:absolute;inset-block:.6rem;right:-1px;width:.25rem;background:var(--red);border-radius:.2rem 0 0 .2rem}
+.tg.lk{background:#eef2f3;color:#2d4247;border:1px dashed #a9b9bc}
+.tpl{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:700;color:var(--violet);background:var(--violet-tint);border-radius:99px;padding:.1rem .55rem;margin-inline-start:auto}
+.af-legend{display:flex;align-items:center;gap:.35rem;font-size:.82rem;color:var(--ink-3);margin-top:.6rem}
+.dup{margin-top:.9rem;border:1px solid #e6c46a;background:var(--amber-tint);border-radius:.6rem;padding:.7rem .9rem;font-size:.95rem}
+.dup .dh{display:flex;gap:.45rem;align-items:center;font-weight:800;color:var(--amber-ink)}
+.dup .opts{display:flex;gap:.4rem;margin-top:.55rem;flex-wrap:wrap}
+.dup .opts span{padding:.2rem .75rem;border-radius:99px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:.86rem}
+.dup .opts span.on{background:var(--teal);color:#fff;border-color:var(--teal)}
 .ing-note{margin-top:1.1rem;font-size:1.1rem;color:var(--ink-2);display:flex;align-items:center;gap:.6rem}
 .ing-note .ico{color:var(--violet);font-size:1.3rem}
 
@@ -643,9 +720,10 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
       <h2 class="st">איך לקח מתחקיר נכנס למאגר</h2>
       <div class="stepper" id="ingStepper">
         <div><span class="n">1</span>העלאת מסמך</div>
-        <div><span class="n">2</span>ה-AI הפנימי מציע</div>
-        <div><span class="n">3</span>אדם בודק ומאשר</div>
-        <div><span class="n">4</span>מופיע לצוות</div>
+        <div><span class="n">2</span>מיפוי לתבנית אחידה</div>
+        <div><span class="n">3</span>בדיקת כפילויות</div>
+        <div><span class="n">4</span>אדם בודק ומאשר</div>
+        <div><span class="n">5</span>מופיע לצוות</div>
       </div>
       <div class="ing">
         <div class="card" id="ingDoc">
@@ -658,15 +736,20 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
           <div class="doc-meta"><span>PDF · 14 עמודים</span><span>·</span><span>ועדת בטיחות, 06/2025</span></div>
         </div>
         <div class="card aic" id="ingAi">
-          <h3><i data-i="sparkles"></i>הצעת ה-AI הפנימי</h3>
-          <div class="ai-run" id="aiRun"><span class="spin"></span>קורא את המסמך ומנסח הצעה...</div>
+          <h3><i data-i="sparkles"></i>הצעת ה-AI הפנימי<span class="tpl"><i data-i="database"></i>תבנית לקח אחידה v1</span></h3>
+          <div class="ai-run" id="aiRun"><span class="spin"></span>קורא את המסמך וממפה לתבנית...</div>
           <dl class="af">
             <dt>כותרת</dt><dd id="afT"></dd>
-            <dt>תקציר לצוות</dt><dd id="afS"></dd>
+            <dt>תקציר (עד 2 שורות)</dt><dd id="afS"></dd>
             <dt>סוג וחומרה</dt><dd id="afK"></dd>
-            <dt>איפה יוצג</dt><dd id="afW"></dd>
-            <dt>מתי יוצג</dt><dd id="afC"></dd>
+            <dt>מערכת › מסך</dt><dd id="afW"></dd>
+            <dt>תנאי הפעלה</dt><dd id="afC"></dd>
+            <dt>קהל יעד</dt><dd id="afA"></dd>
+            <dt>בעלים</dt><dd id="afO"></dd>
+            <dt>בדיקה חוזרת</dt><dd id="afR"></dd>
           </dl>
+          <div class="af-legend"><i data-i="lock"></i>ערך מתוך רשימה סגורה, כדי שכל הלקחים יתויגו באותה שפה</div>
+          <div id="dupBox"></div>
         </div>
         <div class="card" id="ingRev">
           <h3><i data-i="user-check"></i>אישור ופרסום</h3>
@@ -675,13 +758,13 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
             <div class="chk" id="revChk">
               <span><i data-i="check"></i>התקציר נאמן למסמך</span>
               <span><i data-i="check"></i>החומרה והתנאים נכונים</span>
-              <span><i data-i="check"></i>תוקף: בדיקה חוזרת בעוד 12 חודשים</span>
+              <span><i data-i="check"></i>הוחלט: מיזוג עם הלקח הקיים</span>
             </div>
             <div id="revPub"></div>
           </div>
         </div>
       </div>
-      <div class="ing-note"><i data-i="sparkles"></i>ה-AI חוסך את רוב עבודת הניסוח והתיוג. ההחלטה מה מוצג לצוות נשארת תמיד של איש מקצוע.</div>
+      <div class="ing-note"><i data-i="sparkles"></i>כל לקח נשמר באותו מבנה, עם ערכים מרשימה סגורה. כך ההתאמה למסכים עובדת, ואין כפילויות או סתירות במאגר. ההחלטה נשארת תמיד של איש מקצוע.</div>
     </div>
   </section>
 
@@ -692,7 +775,7 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
       <h2 class="st">איפה ה-AI הפנימי של בית החולים נכנס</h2>
       <p class="lead">ה-AI לא מחליף את הנהלים ולא מחליט במקום הצוות. הוא חוסך עבודה ומשפר את הדיוק, בארבע נקודות:</p>
       <div class="ai-grid">
-        <div class="aicard"><span class="ai-i"><i data-i="file-text"></i></span><h3>הפקת לקחים מתחקירים</h3><p>קורא תחקיר או נוהל ומציע תקציר, חומרה, מסכים ותנאי הצגה. אדם מאשר.</p><span class="seen"><i data-i="eye"></i>ראינו בשקף הקודם</span></div>
+        <div class="aicard"><span class="ai-i"><i data-i="file-text"></i></span><h3>הפקת לקחים מתחקירים</h3><p>קורא תחקיר או נוהל, ממפה אותו לתבנית האחידה ובודק אם כבר יש לקח דומה במאגר. אדם מאשר.</p><span class="seen"><i data-i="eye"></i>ראינו בשקף הקודם</span></div>
         <div class="aicard"><span class="ai-i"><i data-i="scan-search"></i></span><h3>התאמה חכמה להקשר</h3><p>מוצא קשרים שלא תויגו ידנית, למשל בין תוצאת מעבדה לבין תרופה שנרשמת עכשיו.</p><span class="seen"><i data-i="eye"></i>ראינו בסימולציה, צעד 6</span></div>
         <div class="aicard"><span class="ai-i"><i data-i="circle-help"></i></span><h3>שאלה חופשית מהנורה</h3><p>עונה רק מתוך מסמכי בית החולים, עם הפניה לסעיף. בלי תשובות "מהאינטרנט".</p><span class="seen"><i data-i="eye"></i>ראינו בסימולציה, צעד 7</span></div>
         <div class="aicard"><span class="ai-i"><i data-i="bar-chart-3"></i></span><h3>ניתוח משוב להנהלה</h3><p>מסכם אילו לקחים לא עובדים, איפה חסר תוכן, ומה כדאי לנסח מחדש.</p><span class="seen"><i data-i="eye"></i>נראה בתמונה הניהולית</span></div>
@@ -903,8 +986,8 @@ var STAGES=[
  {i:'monitor',t:'כניסה למסך',d:'איש הצוות עובד כרגיל. אין שינוי בדרך העבודה.'},
  {i:'scan-search',t:'זיהוי מסך והקשר',d:'איזו מערכת, איזה מסך, ומה ההקשר: גיל, תרופה, תוצאות.'},
  {i:'database',t:'חיפוש במאגר',d:'נהלים, תחקירים ולקחים שמתויגים למסך הזה.'},
- {i:'list-filter',t:'סינון ודירוג',d:'רק מה שמתאים להקשר, לפי חומרה ומשוב. ה-AI מוסיף קשרים.',ai:true},
- {i:'lightbulb',t:'הנורה נדלקת',d:'סימון שקט. צהוב: יש תובנות. אדום: לקח בטיחותי לפעולה.',bulb:true},
+ {i:'list-filter',t:'סינון ודירוג',d:'רק מה שמתאים להקשר, לתפקיד ולמחלקה, לפי חומרה ומשוב. ה-AI מוסיף קשרים.',ai:true},
+ {i:'lightbulb',t:'הנורה נדלקת',d:'צהוב: סימון שקט. אדום: הנורה מהבהבת ופס קצר ליד השדה, בלי לחסום.',bulb:true},
  {i:'thumbs-up',t:'צפייה ומשוב',d:'תקציר, מקור, שאלה חופשית ומשוב שמשפר את הדירוג.'}
 ];
 $('howStages').innerHTML=STAGES.map(function(s,k){return '<div class="stg'+(s.bulb?' bulb':'')+(s.ai?' ai':'')+'">'+(s.ai?'<span class="aitag">'+icon('sparkles')+'AI</span>':'')+'<div class="num">שלב '+(k+1)+'</div><div class="si">'+icon(s.i)+'</div><h3>'+s.t+'</h3><p>'+s.d+'</p></div>';}).join('');
@@ -918,19 +1001,21 @@ var pipe={
 
 /* ===== Patient context (fictional) ===== */
 var PT={name:'רחל לוי',age:78,id:'DEMO-4412',k:3.1,egfr:32,fall:45,diuretic:true};
+var USER={role:'אחות',dept:'פנימית ב׳'};
 
 /* ===== Knowledge base (fictional) ===== */
 var KB=[
 {id:'N-112',type:'נוהל',sev:'high',title:'זיהוי מטופל בשני מזהים',sum:'לפני הצמדת צמיד ולפני כל פעולה: לאמת שם מלא ומספר מזהה מול המטופל או המלווה.',src:'נוהל מוסדי 3.4',date:'03/2025',on:['emr.admission']},
 {id:'L-215',type:'לקח',sev:'mid',title:'מטופל בן 75 ומעלה: הערכת נפילה בתוך 4 שעות',sum:'בקבלה של מטופל מבוגר יש להעביר לסיעוד הערכת סיכון לנפילה בתוך 4 שעות. זוהה פער חוזר במשמרות לילה.',src:'ועדת איכות, סיכום רבעוני',date:'01/2026',on:['emr.admission'],when:function(c){return PT.age>=75;},why:'גיל 78'},
 {id:'N-140',type:'נוהל',sev:'low',title:'תיעוד רגישויות בשדה הייעודי',sum:'רגישות מתועדת רק בשדה הרגישויות ולא בהערה חופשית, כדי שהמערכת תתריע ברישום.',src:'נוהל מוסדי 5.1',date:'08/2024',on:['emr.admission']},
-{id:'L-207',type:'לקח',sev:'mid',title:'ציון 45 ומעלה: אמצעי מניעה מיידיים',sum:'בציון סיכון גבוה: מיטה נמוכה, פעמון בהישג יד, סימון על הדלת והערכה חוזרת בכל משמרת.',src:'ועדת נפילות',date:'11/2025',on:['nursing.fall'],when:function(){return PT.fall>=45;},why:'ציון 45'},
+{id:'L-207',type:'לקח',sev:'mid',title:'ציון 45 ומעלה: אמצעי מניעה מיידיים',sum:'בציון סיכון גבוה: מיטה נמוכה, פעמון בהישג יד, סימון על הדלת והערכה חוזרת בכל משמרת.',src:'ועדת נפילות',date:'11/2025',aud:'לצוות סיעודי',on:['nursing.fall'],when:function(){return PT.fall>=45;},why:'ציון 45'},
 {id:'T-090',type:'תחקיר',sev:'mid',title:'נפילה בדרך לשירותים אחרי מתן משתנים',sum:'בתחקיר נמצא שמטופלת שקיבלה משתן בערב נפלה בלילה בדרך לשירותים. מומלץ לתזמן משתנים לבוקר ולהציע ליווי.',src:'תחקיר אירוע',date:'09/2025',on:['nursing.fall'],when:function(){return PT.diuretic;},why:'מקבלת משתנים'},
 {id:'N-150',type:'נוהל',sev:'low',title:'הדרכת מטופל ומשפחה למניעת נפילות',sum:'למסור דף הסבר ולתעד שהמטופל והמלווה הבינו מתי לקרוא לעזרה.',src:'נוהל סיעודי 2.8',date:'04/2025',on:['nursing.fall']},
 {id:'L-160',type:'לקח',sev:'mid',title:'אשלגן מתחת ל-3.5: לעדכן רופא באותה שעה',sum:'ערך נמוך מחייב עדכון רופא ותיעוד, ובדיקה חוזרת בתוך 4 עד 6 שעות מסיום התיקון.',src:'ועדת מעבדה וסיעוד',date:'02/2026',on:['lab.results'],when:function(){return PT.k<3.5;},why:'אשלגן 3.1'},
 {id:'L-118',type:'לקח',sev:'mid',title:'תפקוד כליות ירוד: בדיקת מינונים',sum:'כאשר eGFR נמוך מ-45, לבדוק עם הרוקח את מינוני התרופות שמופרשות בכליות.',src:'ועדת תרופות',date:'12/2025',on:['lab.results'],when:function(){return PT.egfr<45;},why:'eGFR 32'},
 {id:'N-221',type:'נוהל',sev:'mid',title:'תרופות בעלות שם או מראה דומים',sum:'בתרופות מרשימת LASA: לקרוא את שם התרופה בקול ולוודא מינון מול ההוראה לפני המתן.',src:'נוהל מוסדי 7.2',date:'11/2025',on:['emr.meds']},
-{id:'T-031',type:'תחקיר',sev:'high',title:'אשלגן מרוכז: בדיקה כפולה',sum:'בתחקיר נמצא שמתן אשלגן בווריד ללא בדיקה כפולה הוביל להפרעת קצב. נדרשת בדיקה בלתי תלויה של אחות שנייה, ומתן במשאבה בלבד.',src:'תחקיר אירוע חריג',date:'06/2025',on:['emr.meds'],when:function(c){return c.drug==='kcl';},why:'נבחר אשלגן כלורי'},
+{id:'T-031',type:'תחקיר',sev:'high',title:'אשלגן מרוכז: בדיקה כפולה',sum:'בתחקיר נמצא שמתן אשלגן בווריד ללא בדיקה כפולה הוביל להפרעת קצב. נדרשת בדיקה בלתי תלויה של אחות שנייה, ומתן במשאבה בלבד.',src:'תחקיר אירוע חריג',date:'06/2025',aud:'לצוות סיעודי',on:['emr.meds'],when:function(c){return c.drug==='kcl';},why:'נבחר אשלגן כלורי'},
+{id:'N-233',type:'נוהל',sev:'mid',title:'הוראת אשלגן לווריד: לציין ריכוז וקצב',sum:'בהוראה לאשלגן לווריד יש לציין ריכוז, נפח וקצב מתן מרבי.',src:'נוהל מוסדי 7.4',date:'11/2025',roles:['רופא'],on:['emr.meds'],when:function(c){return c.drug==='kcl';},why:'נבחר אשלגן כלורי'},
 {id:'L-171',type:'לקח',sev:'mid',ai:true,title:'אשלגן לווריד בתפקוד כליות ירוד',sum:'בתפקוד כליות ירוד הסיכון לעודף אשלגן עולה. להתייעץ עם הרופא על קצב איטי יותר ובדיקה חוזרת מוקדמת.',src:'ועדת תרופות',date:'02/2026',on:[],aiOn:['emr.meds'],when:function(c){return c.drug==='kcl'&&PT.egfr<45;},why:'קשר לתוצאות המעבדה מהבוקר'},
 {id:'T-044',type:'תחקיר',sev:'high',title:'רגישות לפניצילין ואמוקסיצילין',sum:'אמוקסיצילין שייך לקבוצת הפניצילינים, ולמטופלת רגישות מתועדת. בתחקיר קודם התגובה התגלתה רק אחרי המנה השנייה.',src:'תחקיר אירוע חריג',date:'09/2025',on:['emr.meds'],when:function(c){return c.drug==='amox';},why:'אמוקסיצילין + רגישות'},
 {id:'L-119',type:'לקח',sev:'mid',title:'אנוקספרין ותפקוד כליות',sum:'לפני מתן אנוקספרין לבדוק קריאטינין עדכני. ב-eGFR נמוך נדרשת לעיתים הפחתת מינון.',src:'ועדת תרופות',date:'02/2026',on:['emr.meds'],when:function(c){return c.drug==='enox';},why:'eGFR 32'},
@@ -962,7 +1047,7 @@ var SYS={
    menu:['קובץ','עריכה','תצוגה','מטופל','הוראות','סיכומים','דוחות','כלים','עזרה'],
    tools:[['file-plus','חדש'],['save','שמירה'],['printer','הדפסה'],['refresh-cw','רענון'],'|',['user','מטופל'],['pill','הוראות'],['file-text','סיכומים']],
    screens:['dashboard','admission','meds','proc','discharge']},
- nursing:{n:'רשומה סיעודית',full:'רשומה סיעודית',i:'clipboard-list',ver:'גרסה 5.1',
+ nursing:{n:'רשומה סיעודית',full:'רשומה סיעודית',i:'clipboard-list',ver:'גרסה 5.1 · ווב',url:'nursing.medcenter.local/patient/4412/',
    menu:['קובץ','עריכה','תצוגה','הערכות','משמרת','דוחות','עזרה'],
    tools:[['save','שמירה'],['printer','הדפסה'],['refresh-cw','רענון'],'|',['clipboard-check','הערכה'],['thermometer','מדדים'],['users','מסירת משמרת']],
    screens:['fall','vitals','plan']},
@@ -1076,8 +1161,14 @@ $('taskbar').addEventListener('click',function(e){var b=e.target.closest('.task'
 function renderChrome(){
   var S=SYS[ctx.sys],sc=SCR[key()];
   win.setAttribute('data-sys',ctx.sys);
-  $('wTitle').innerHTML=icon(S.i)+'<span>'+S.full+' · מרכז רפואי לדוגמה · '+sc.t+'</span><span class="wb"><span>'+icon('minus')+'</span><span>'+icon('square')+'</span><span>'+icon('x')+'</span></span>';
-  $('wMenu').innerHTML=S.menu.map(function(m){return '<span>'+m+'</span>';}).join('');
+  var wb='<span class="wb"><span>'+icon('minus')+'</span><span>'+icon('square')+'</span><span>'+icon('x')+'</span></span>';
+  if(S.url){
+    $('wTitle').innerHTML='<span class="br-tab">'+icon(S.i)+S.full+' · '+sc.t+'</span><span class="br-new">+</span>'+wb;
+    $('wMenu').innerHTML=icon('chevron-right')+icon('chevron-left')+icon('refresh-cw')+'<span class="addr">'+icon('lock')+'<bdi>'+S.url+SCR[key()].code.replace(/_/g,'-')+'</bdi></span>';
+  }else{
+    $('wTitle').innerHTML=icon(S.i)+'<span>'+S.full+' · מרכז רפואי לדוגמה · '+sc.t+'</span>'+wb;
+    $('wMenu').innerHTML=S.menu.map(function(m){return '<span>'+m+'</span>';}).join('');
+  }
   $('wTools').innerHTML=S.tools.map(function(t){return t==='|'?'<span class="tb-sep"></span>':'<button type="button" class="tb">'+icon(t[0])+t[1]+'</button>';}).join('')+
     (ctx.mode==='B'?'<button type="button" class="tb tb-bulb bulb-btn" id="tbBulb">'+icon('lightbulb')+'תובנות<b class="bb" hidden>0</b></button>':'');
   $('wBanner').innerHTML='<span class="ph">'+icon('user')+'</span><span class="nm">'+PT.name+'</span>'+
@@ -1106,14 +1197,16 @@ function goScreen(sys,scr,opt){
 }
 
 function candidates(){var k=key();return KB.filter(function(x){return x.on.indexOf(k)>-1||(x.aiOn&&x.aiOn.indexOf(k)>-1);});}
-function find(){var k=key();return KB.filter(function(x){
+function base(){var k=key();return KB.filter(function(x){
   var tagged=x.on.indexOf(k)>-1, aim=x.aiOn&&x.aiOn.indexOf(k)>-1;
-  return (tagged||aim)&&(!x.when||x.when(ctx))&&weight[x.id]>-2;})
+  return (tagged||aim)&&(!x.when||x.when(ctx))&&weight[x.id]>-2;});}
+function forRole(x){return !x.roles||x.roles.indexOf(USER.role)>-1;}
+function find(){return base().filter(forRole)
  .sort(function(a,b){return sc(b)-sc(a);});
  function sc(x){return SEV[x.sev].r*10+weight[x.id]*3+(x.when?5:0)-(x.ai?1:0);}
 }
 function ctxText(){
-  var c=['גיל 78'];
+  var c=['משתמשת: '+USER.role+', '+USER.dept,'גיל 78'];
   if(ctx.sys==='emr'&&ctx.scr!=='dashboard')c.push('רגישות: פניצילין');
   if(ctx.drug)c.push('תרופה: '+DRUGS[ctx.drug]);
   if(key()==='emr.proc')c.push('נוגדי קרישה: '+(ctx.anticoag?'כן':'לא'));
@@ -1125,7 +1218,7 @@ function ctxText(){
 
 async function run(trigger){
   var my=++runTok,S=SYS[ctx.sys],s=SCR[key()];
-  matches=[];paintBulb(false);pipe.reset();
+  matches=[];acked=false;clearCallout();paintBulb(false);pipe.reset();
   pipe.set(0,trigger?trigger:'נפתח מסך: '+S.n+' › '+s.t);
   await wait(420);if(my!==runTok)return;
   pipe.set(1,'<bdi class="ltr">'+s.code+'</bdi> · '+ctxText());
@@ -1133,30 +1226,45 @@ async function run(trigger){
   var cand=candidates().length;
   pipe.set(2,cand?'נמצאו '+cand+' פריטים שמקושרים למסך':'אין פריטים שמקושרים למסך הזה');
   await wait(480);if(my!==runTok)return;
-  var m=find(),aiN=m.filter(function(x){return x.ai;}).length;
-  pipe.set(3,m.length?m.length+' רלוונטיים להקשר'+(aiN?' · <span style="color:var(--violet);font-weight:700">'+aiN+' נמצא ע״י AI</span>':''):'שום פריט לא מתאים להקשר');
+  var m=find(),aiN=m.filter(function(x){return x.ai;}).length,roleOut=base().filter(function(x){return !forRole(x);}).length;
+  pipe.set(3,(m.length?m.length+' רלוונטיים להקשר':'שום פריט לא מתאים להקשר')+(aiN?' · <span style="color:var(--violet);font-weight:700"><bdi>'+aiN+' נמצא ע״י AI</bdi></span>':'')+(roleOut?'<br>'+roleOut+' סונן: מיועד לרופאים':''));
   await wait(380);if(my!==runTok)return;
   matches=m;
   var crit=isCrit(m);
   pipe.set(4,m.length?(crit?'<b style="color:var(--red)">נורה אדומה</b> · לקח בטיחותי לפעולה':'נורה צהובה')+' · '+m.length+' תובנות':'הנורה נשארת כבויה');
   pipe.done(4);
   paintBulb(true);
+  showCallout(m);
   if(m.length)stats.onShown(key());
+}
+var acked=false;
+function clearCallout(){document.querySelectorAll('.callout').forEach(function(e){e.remove();});}
+function showCallout(m){
+  clearCallout();
+  var c=m.filter(function(x){return x.sev==='high'&&x.when;})[0];if(!c)return;
+  var anchor=null;
+  if(ctx.drug&&$('drug'))anchor=$('drug').closest('.fl');
+  else if(ctx.anticoag&&$('acLabel'))anchor=$('acLabel');
+  if(!anchor)return;
+  var b=document.createElement('button');b.type='button';b.className='callout';
+  b.innerHTML=icon('shield-alert')+'<span><span class="lab">'+icon('lightbulb')+'נורת התובנות</span><b>לקח בטיחותי:</b> '+c.title+'</span><span class="go">לפרטים'+icon('chevron-left')+'</span>';
+  b.addEventListener('click',function(){if(!panelOpen)openPanel();});
+  anchor.insertAdjacentElement('afterend',b);
 }
 function isCrit(m){return m.some(function(x){return x.sev==='high'&&x.when;});}
 
 function paintBulb(fresh){
   var m=matches,crit=isCrit(m),n=m.length;
   // mode A – floating agent
-  agent.classList.remove('on','crit','flash','tip');void agent.offsetWidth;
+  agent.classList.remove('on','crit','flash','tip','alarm');void agent.offsetWidth;
   $('agentBadge').hidden=!n;$('agentBadge').textContent=n;
-  if(n){agent.classList.add('on');if(crit)agent.classList.add('crit');}
+  if(n){agent.classList.add('on');if(crit){agent.classList.add('crit');if(!acked)agent.classList.add('alarm');}}
   agent.setAttribute('aria-label',n?'נורת התובנות: '+n+' תובנות':'נורת התובנות: אין תובנות');
   $('agentTip').textContent=crit?'לקח בטיחותי לפעולה הזו':n+' תובנות למסך הזה';
   var ta=$('trayAgent');if(ta){ta.classList.toggle('on',!!n);ta.classList.toggle('crit',crit);}
   // mode B – toolbar button
   var tb=$('tbBulb');
-  if(tb){tb.classList.remove('on','crit','flash');void tb.offsetWidth;var bb=tb.querySelector('.bb');bb.hidden=!n;bb.textContent=n;if(n){tb.classList.add('on');if(crit)tb.classList.add('crit');}}
+  if(tb){tb.classList.remove('on','crit','flash','alarm');void tb.offsetWidth;var bb=tb.querySelector('.bb');bb.hidden=!n;bb.textContent=n;if(n){tb.classList.add('on');if(crit){tb.classList.add('crit');if(!acked)tb.classList.add('alarm');}}}
   if(fresh&&n){
     if(ctx.mode==='A'){agent.classList.add('flash','tip');setTimeout(function(){agent.classList.remove('tip');},2600);}
     else if(tb)tb.classList.add('flash');
@@ -1173,7 +1281,7 @@ function renderPanel(){
   else L.innerHTML=matches.map(function(m){
     var rated=stats.rated[m.id];
     return '<article class="ins '+m.sev+'" data-id="'+m.id+'"><div class="tags"><span class="tg '+m.sev+'">'+SEV[m.sev].l+'</span><span class="tg">'+icon(TYPE_ICO[m.type])+m.type+'</span>'+
-      (m.ai?'<span class="tg ai">'+icon('sparkles')+'הותאם ע״י AI</span>':'')+(m.why?'<span class="tg ctx">'+icon('tag')+m.why+'</span>':'')+'</div>'+
+      (m.ai?'<span class="tg ai">'+icon('sparkles')+'הותאם ע״י AI</span>':'')+(m.why?'<span class="tg ctx">'+icon('tag')+m.why+'</span>':'')+(m.aud?'<span class="tg">'+icon('users')+m.aud+'</span>':'')+'</div>'+
       '<h5>'+m.title+'</h5><p>'+m.sum+'</p><div class="src">'+icon('file-text')+m.src+' · '+m.date+' · <bdi>'+m.id+'</bdi></div>'+
       '<div class="act"><button type="button" class="open" data-a="open">'+icon('external-link')+'למסמך המלא</button>'+
       (rated?'<span class="rated">'+icon('check')+(rated>0?'סומן כרלוונטי':'סומן כלא רלוונטי')+'</span>':
@@ -1187,7 +1295,7 @@ function placePanel(){
 }
 function openPanel(){
   panelOpen=true;placePanel();renderPanel();$('askOut').innerHTML='';$('askIn').value='';panel.hidden=false;
-  agent.classList.remove('tip');
+  agent.classList.remove('tip','alarm');acked=true;var tb=$('tbBulb');if(tb)tb.classList.remove('alarm');
   pipe.set(5,'החלון נפתח');pipe.done(5);
   stats.onOpen();
 }
@@ -1290,23 +1398,23 @@ var SIM=[
   y:'אף אחד לא חיפש כלום. הידע הגיע לבד, למסך שבו עובדים.',
   r:async function(ok){setMode('A');await goScreen('emr','admission');}},
  {t:'לחיצה אחת: מה בית החולים יודע',
-  w:'לחיצה על הנורה פותחת תקציר קצר, מקור, תאריך וקישור למסמך המלא. התגית "גיל 78" מראה שהתובנה הותאמה למטופלת.',
+  w:'לחיצה על הנורה פותחת תקציר קצר, מקור, תאריך וקישור למסמך המלא. התגית "גיל 78" מראה שהתובנה הותאמה למטופלת, ומוצגים רק פריטים שמתאימים לתפקיד (אחות) ולמחלקה.',
   y:'הצוות לא קורא נוהל של 12 עמודים. הוא מקבל את השורה שרלוונטית עכשיו, עם מקור שאפשר לסמוך עליו.',
   r:async function(ok){setMode('A');await goScreen('emr','admission');if(!ok())return;await wait(500);if(!ok())return;openPanel();}},
  {t:'מערכת אחרת: הרשומה הסיעודית',
-  w:'מיכל עוברת למערכת אחרת לגמרי וממלאת הערכת סיכון לנפילה. הציון 45, סיכון גבוה. אותה נורה מזהה גם את המסך הזה.',
+  w:'מיכל עוברת למערכת אחרת לגמרי, הפעם מערכת ווב שנפתחת בדפדפן, וממלאת הערכת סיכון לנפילה. הציון 45, סיכון גבוה. אותה נורה מזהה גם את המסך הזה.',
   y:'הכלי לא שייך למערכת אחת. מה שקובע הוא המסך שהעובד נמצא בו, בכל מערכת.',
   r:async function(ok){setMode('A');await goScreen('nursing','fall');if(!ok())return;await wait(400);if(!ok())return;openPanel();}},
  {t:'מעבדה: התוצאות של הבוקר',
-  w:'בתוצאות: אשלגן 3.1 (נמוך) ותפקוד כליות ירוד. הנורה מציגה לקחים שמופעלים לפי הערכים עצמם, לא רק לפי המסך.',
+  w:'מערכת שלישית, ישנה יותר. בתוצאות: אשלגן 3.1 (נמוך) ותפקוד כליות ירוד. הנורה מציגה לקחים שמופעלים לפי הערכים עצמם, לא רק לפי המסך.',
   y:'אותו מסך מציג ידע שונה לכל מטופל. זה ההבדל בין פורטל נהלים לבין ידע בהקשר.',
   r:async function(ok){setMode('A');await goScreen('lab','results');if(!ok())return;await wait(400);if(!ok())return;openPanel();}},
  {t:'רגע קריטי: אשלגן לווריד',
-  w:'מיכל נכנסת למתן תרופות ובוחרת אשלגן כלורי לווריד. הנורה הופכת אדומה: יש תחקיר אירוע חריג. ה-AI הפנימי הוסיף גם לקח שמחבר את התרופה לתוצאות המעבדה.',
+  w:'מיכל בוחרת אשלגן כלורי לווריד. הנורה מאדימה ומהבהבת, ופס קצר מופיע ליד השדה, בלי לחסום. ה-AI הוסיף לקח שמקשר לתוצאות המעבדה.',
   y:'לקח מתחקיר שנכתב לפני חצי שנה מגיע בדיוק לרגע שבו האירוע עלול לחזור.',
   r:async function(ok){setMode('A');await goScreen('emr','meds');if(!ok())return;await wait(700);if(!ok())return;
     var d=$('drug');d.classList.add('attn');d.value='kcl';ctx.drug='kcl';await run('נבחרה תרופה: אשלגן כלורי לווריד');if(!ok())return;
-    await wait(500);if(!ok())return;openPanel();}},
+    await wait(2200);if(!ok())return;openPanel();}},
  {t:'שאלה חופשית לנהלים',
   w:'מיכל רוצה לוודא את קצב המתן. היא שואלת בתוך חלון הנורה, וה-AI הפנימי עונה רק מתוך מסמכי בית החולים, עם הפניה לסעיף.',
   y:'המודל רץ על שרת בתוך הרשת הפנימית. השאלה והתשובה לא יוצאות מבית החולים.',
@@ -1317,10 +1425,10 @@ var SIM=[
   r:async function(ok){setMode('A');await goScreen('emr','meds',{drug:'kcl'});if(!ok())return;openPanel();await wait(900);if(!ok())return;
     if(stats.rated['T-031']){var el=$('pList').querySelector('[data-id="T-031"]');if(el)el.classList.add('lit');}else rate('T-031',1);}},
  {t:'הכנה לפרוצדורה',
-  w:'רחל מיועדת לניקוז נוזל פלאורלי מחר. נוהל ה-Time-out מופיע תמיד. כשמיכל מסמנת שהמטופלת נוטלת נוגדי קרישה, נוסף תחקיר שעולה לראש הרשימה.',
+  w:'רחל מיועדת לניקוז נוזל פלאורלי מחר. נוהל ה-Time-out מופיע תמיד. כשמיכל מסמנת שהמטופלת נוטלת נוגדי קרישה, הנורה מאדימה, מופיע פס ליד הסימון, ותחקיר עולה לראש הרשימה.',
   y:'ככל שמזינים יותר מידע, ההתאמה מדויקת יותר. בלי שאף אחד יגדיר זאת ידנית בכל פעם.',
   r:async function(ok){setMode('A');await goScreen('emr','proc');if(!ok())return;await wait(900);if(!ok())return;
-    $('acLabel').classList.add('attn');$('ac').checked=true;ctx.anticoag=true;await run('סומן: נוטלת נוגדי קרישה');if(!ok())return;await wait(400);if(!ok())return;openPanel();}},
+    $('acLabel').classList.add('attn');$('ac').checked=true;ctx.anticoag=true;await run('סומן: נוטלת נוגדי קרישה');if(!ok())return;await wait(1800);if(!ok())return;openPanel();}},
  {t:'שחרור הביתה',
   w:'במכתב השחרור עולה ראשון לקח מתחקיר אשפוז חוזר: להשוות את התרופות מהבית לתרופות בשחרור. בטבלה כבר רואים שורה שלא מולאה.',
   y:'השלב שבו דברים "נופלים בין הכיסאות" מקבל בדיוק את הלקחים שנכתבו עליו.',
@@ -1330,7 +1438,7 @@ var SIM=[
   y:'לאחות החוויה כמעט זהה. ההבדל הוא במה שנדרש מ-IT ומהספקים. נשווה בהמשך המצגת.',
   r:async function(ok){setMode('B');await goScreen('emr','meds',{drug:'kcl'});if(!ok())return;await wait(400);if(!ok())return;openPanel();}},
  {t:'מה ראינו',
-  w:'<ul><li>הנורה שותקת כשאין מה להגיד</li><li>אותה נורה בשלוש מערכות שונות</li><li>ידע לפי ההקשר: גיל, ערכי מעבדה, תרופה</li><li>אדום רק ברגע בטיחותי אמיתי</li><li>שאלה חופשית ל-AI פנימי, עם מקור</li><li>משוב שמזין את התמונה הניהולית</li></ul>',
+  w:'<ul><li>הנורה שותקת כשאין מה להגיד</li><li>אותה נורה בשלוש מערכות שונות: שולחן עבודה, ווב ומערכת ישנה</li><li>ידע לפי ההקשר: גיל, ערכי מעבדה, תרופה</li><li>אדום ופס ליד השדה רק ברגע בטיחותי אמיתי</li><li>רק מה שמתאים לתפקיד ולמחלקה</li><li>שאלה חופשית ל-AI פנימי, עם מקור</li><li>משוב שמזין את התמונה הניהולית</li></ul>',
   y:'אפשר להמשיך ללחוץ חופשי בסימולציה. בשקף הבא: איך לקח מתחקיר נכנס למאגר.',
   r:async function(ok){await goScreen(ctx.sys,ctx.scr,{drug:ctx.drug,anticoag:ctx.anticoag});}}
 ];
@@ -1360,36 +1468,48 @@ async function ingStep(k){
   $('ingStepper').querySelectorAll('div').forEach(function(d,j){d.className=j===k?'on':(j<k?'done':'');});
   $('ingDoc').classList.toggle('dim',k>1);
   $('ingAi').classList.toggle('dim',k<1);
-  $('ingRev').classList.toggle('dim',k<2);
-  $('revChk').style.visibility=k>=2?'visible':'hidden';
-  var F={T:'אשלגן מרוכז: בדיקה כפולה',S:'מתן אשלגן בווריד ללא בדיקה כפולה הוביל להפרעת קצב. נדרשת בדיקה בלתי תלויה של אחות שנייה, ומתן במשאבה בלבד.'};
-  var K='<span class="tg">'+icon('shield-alert')+'תחקיר</span> <span class="tg high">חשוב מאוד</span>';
-  var W='<span class="tg">רשומה רפואית › מתן תרופות</span>';
-  var C='<span class="tg ctx">'+icon('tag')+'תרופה = אשלגן כלורי לווריד</span>';
-  ['afT','afS','afK','afW','afC'].forEach(function(id){$(id).innerHTML='';});
+  $('ingRev').classList.toggle('dim',k<3);
+  $('revChk').style.visibility=k>=3?'visible':'hidden';
+  function lk(t){return '<span class="tg lk">'+icon('lock')+t+'</span>';}
+  var T='אשלגן מרוכז: בדיקה כפולה',S='מתן אשלגן בווריד ללא בדיקה כפולה הוביל להפרעת קצב. נדרשת בדיקה בלתי תלויה של אחות שנייה, ומתן במשאבה בלבד.';
+  var H={afK:lk('תחקיר')+' '+lk('חשוב מאוד'),afW:lk('רשומה רפואית › מתן תרופות'),afC:lk('תרופה')+' = '+lk('אשלגן כלורי IV'),
+    afA:lk('אחיות')+' '+lk('כל המחלקות'),afO:'ועדת בטיחות תרופות',afR:'06/2027'};
+  ['afT','afS','afK','afW','afC','afA','afO','afR'].forEach(function(id){$(id).innerHTML='';});
   $('aiRun').style.visibility=k===1?'visible':'hidden';
-  $('aiRun').innerHTML='<span class="spin"></span>קורא את המסמך ומנסח הצעה...';
-  $('revPub').innerHTML='';
+  $('aiRun').innerHTML='<span class="spin"></span>קורא את המסמך וממפה לתבנית...';
+  $('dupBox').innerHTML='';$('revPub').innerHTML='';
   if(k===0)return;
-  if(k>=2){$('afT').textContent=F.T;$('afS').textContent=F.S;$('afK').innerHTML=K;$('afW').innerHTML=W;$('afC').innerHTML=C;}
   if(k===1){
     await wait(700);if(my!==ingTok)return;
-    await typeInto($('afT'),F.T,my);if(my!==ingTok)return;
-    await typeInto($('afS'),F.S,my);if(my!==ingTok)return;
-    await wait(250);$('afK').innerHTML=K;await wait(350);if(my!==ingTok)return;$('afW').innerHTML=W;await wait(350);if(my!==ingTok)return;$('afC').innerHTML=C;
-    $('aiRun').innerHTML=icon('check')+'הצעה מוכנה לבדיקה · עובד על שרת פנימי';
+    await typeInto($('afT'),T,my);if(my!==ingTok)return;
+    await typeInto($('afS'),S,my);if(my!==ingTok)return;
+    var ks=Object.keys(H);
+    for(var i=0;i<ks.length;i++){await wait(280);if(my!==ingTok)return;$(ks[i]).innerHTML=H[ks[i]];}
+    $('aiRun').innerHTML=icon('check')+'מופה לתבנית האחידה · עובד על שרת פנימי';
+    return;
   }
-  if(k===2){$('revPub').innerHTML='<div style="display:flex;gap:.6rem"><button class="btn btn-primary" type="button">'+icon('check')+'אישור ופרסום</button><button class="btn btn-quiet" type="button">עריכה</button></div>';}
-  if(k===3){
-    $('revPub').innerHTML='<div class="pub">'+icon('check')+'<span>פורסם. יוצג לצוות במסך מתן תרופות, כשנבחר אשלגן כלורי לווריד.</span></div>'+
-    '<div class="mini" style="margin-top:.8rem"><div class="tags"><span class="tg high">חשוב מאוד</span><span class="tg">'+icon('shield-alert')+'תחקיר</span></div><b>'+F.T+'</b><div class="muted" style="font-size:.85rem;margin-top:.2rem">כך זה נראה בנורה (ראינו בסימולציה, צעד 6)</div></div>';
+  $('afT').textContent=T;$('afS').textContent=S;Object.keys(H).forEach(function(id){$(id).innerHTML=H[id];});
+  var dupRes='<div class="dh">'+icon('triangle-alert')+'נמצא במאגר לקח דומה · דמיון 81%</div>'+
+    '<div style="margin-top:.3rem"><bdi>L-044</bdi> · "אשלגן לווריד: מתן במשאבה בלבד" (ועדת תרופות, 2024)</div>'+
+    '<div class="opts"><span'+(k>=3?' class="on"':'')+'>מיזוג לפריט אחד</span><span>עדכון הקיים</span><span>יצירת פריט חדש</span></div>';
+  if(k===2){
+    $('dupBox').innerHTML='<div class="dup"><div class="ai-run" style="margin:0"><span class="spin"></span>משווה מול 214 פריטים במאגר...</div></div>';
+    await wait(1100);if(my!==ingTok)return;
+    $('dupBox').innerHTML='<div class="dup">'+dupRes+'</div>';
+    return;
+  }
+  $('dupBox').innerHTML='<div class="dup">'+dupRes+'</div>';
+  if(k===3){$('revPub').innerHTML='<div style="display:flex;gap:.6rem"><button class="btn btn-primary" type="button">'+icon('check')+'אישור ופרסום</button><button class="btn btn-quiet" type="button">עריכה</button></div>';}
+  if(k===4){
+    $('revPub').innerHTML='<div class="pub">'+icon('check')+'<span>פורסם ומוזג עם <bdi>L-044</bdi>. יוצג לאחיות במסך מתן תרופות, כשנבחר אשלגן כלורי לווריד.</span></div>'+
+    '<div class="mini" style="margin-top:.8rem"><div class="tags"><span class="tg high">חשוב מאוד</span><span class="tg">'+icon('shield-alert')+'תחקיר</span></div><b>'+T+'</b><div class="muted" style="font-size:.85rem;margin-top:.2rem">כך זה נראה בנורה (ראינו בסימולציה, צעד 6)</div></div>';
   }
 }
 
 /* ===== Deck ===== */
 var CHAPTERS=['פתיחה','האתגר','איך זה עובד','סימולציה','המאגר וה-AI','ארכיטקטורה','התממשקות','תמונה ניהולית'];
 var slideEls=[].slice.call(document.querySelectorAll('.slide'));
-var DECK=[{id:'cover',ch:0},{id:'problem',ch:1},{id:'compare',ch:1},{id:'how',ch:2},{id:'sim',ch:3,steps:SIM.length},{id:'ingest',ch:4,steps:4},{id:'ai',ch:4},{id:'arch',ch:5},{id:'ab',ch:6},{id:'mgmt',ch:7},{id:'end',ch:7}];
+var DECK=[{id:'cover',ch:0},{id:'problem',ch:1},{id:'compare',ch:1},{id:'how',ch:2},{id:'sim',ch:3,steps:SIM.length},{id:'ingest',ch:4,steps:5},{id:'ai',ch:4},{id:'arch',ch:5},{id:'ab',ch:6},{id:'mgmt',ch:7},{id:'end',ch:7}];
 var cur=-1,sub=0;
 $('chapters').innerHTML=CHAPTERS.map(function(c,k){return '<button type="button" data-ch="'+k+'"'+(k===3?' class="sim-ch"':'')+'>'+(k===3?icon('play')+' ':'')+c+'</button>';}).join('');
 $('chapters').addEventListener('click',function(e){var b=e.target.closest('button[data-ch]');if(!b)return;var ch=+b.getAttribute('data-ch');for(var i=0;i<DECK.length;i++){if(DECK[i].ch===ch){goTo(i,0);return;}}});
