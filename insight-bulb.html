@@ -429,8 +429,15 @@ fieldset.fs legend{font-size:.78rem;font-weight:700;color:#1d2f44;padding-inline
 .mode-b .callout>.ico{color:#c0402a;font-size:1.15rem}
 .callout .go{margin-inline-start:auto;font-weight:800;white-space:nowrap;display:inline-flex;align-items:center;gap:.2rem}
 @keyframes fadein{from{opacity:0;transform:translateY(-.3rem)}to{opacity:1;transform:none}}
-.agent.crit.alarm .bulb-ico{animation:pulse 1.3s ease-out infinite}
-.tb-bulb.crit.alarm{animation:pulse 1.3s ease-out infinite}
+@keyframes alarmRing{0%{box-shadow:0 0 0 0 rgba(232,91,63,.9)}70%{box-shadow:0 0 0 1.5rem rgba(232,91,63,0)}100%{box-shadow:0 0 0 0 rgba(232,91,63,0)}}
+@keyframes alarmBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+.agent.crit.alarm{animation:alarmRing 1.1s ease-out infinite;border-color:#ff8f73}
+.agent.crit.alarm .bulb-ico{animation:alarmBeat 1.1s ease-in-out infinite;background:rgba(255,143,115,.38)}
+.agent.crit .agent-tip{background:#c0402a;color:#fff}
+.tb-bulb.crit.alarm{animation:alarmRing 1.1s ease-out infinite}
+.tb-bulb.crit.alarm>.ico{animation:alarmBeat 1.1s ease-in-out infinite}
+.tb-tip{display:none;position:absolute;top:calc(100% + .5rem);left:0;z-index:7;background:#c0402a;color:#fff;font-size:.8rem;font-weight:700;white-space:nowrap;padding:.35rem .65rem;border-radius:.4rem;box-shadow:0 .3rem .8rem rgba(0,0,0,.25)}
+.tb-bulb.crit.alarm .tb-tip{display:block}
 .toast{position:absolute;z-index:8;bottom:3.4rem;left:50%;transform:translate(-50%,.5rem);background:#1d2b30;color:#fff;padding:.55rem 1rem;border-radius:.5rem;font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:.4rem;opacity:0;pointer-events:none;transition:all .25s;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
@@ -1046,7 +1053,7 @@ var STAGES=[
  {i:'scan-search',t:'זיהוי מסך והקשר',d:'איזו מערכת, איזה מסך, ומה ההקשר: גיל, תרופה, תוצאות.'},
  {i:'database',t:'חיפוש במאגר',d:'נהלים, תחקירים ולקחים שמתויגים למסך הזה.'},
  {i:'list-filter',t:'סינון ודירוג',d:'רק מה שמתאים להקשר, לתפקיד ולמחלקה, לפי חומרה ומשוב. ה-AI מוסיף קשרים.',ai:true},
- {i:'lightbulb',t:'הנורה נדלקת',d:'רק כשיש משהו ספציפי למטופל ולפעולה. צהוב: סימון שקט. אדום: פס ליד השדה, בלי לחסום.',bulb:true},
+ {i:'lightbulb',t:'הנורה נדלקת',d:'רק כשיש משהו ספציפי למטופל ולפעולה. צהוב: סימון שקט. אדום מהבהב: לקח בטיחותי לפעולה עצמה.',bulb:true},
  {i:'thumbs-up',t:'צפייה ומשוב',d:'תקציר, מקור, שאלה חופשית ומשוב שמשפר את הדירוג.'}
 ];
 $('howStages').innerHTML=STAGES.map(function(s,k){return '<div class="stg'+(s.bulb?' bulb':'')+(s.ai?' ai':'')+'">'+(s.ai?'<span class="aitag">'+icon('sparkles')+'AI</span>':'')+'<div class="num">שלב '+(k+1)+'</div><div class="si">'+icon(s.i)+'</div><h3>'+s.t+'</h3><p>'+s.d+'</p></div>';}).join('');
@@ -1235,7 +1242,7 @@ function renderChrome(){
     $('wMenu').innerHTML=S.menu.map(function(m){return '<span>'+m+'</span>';}).join('');
   }
   $('wTools').innerHTML=S.tools.map(function(t){return t==='|'?'<span class="tb-sep"></span>':'<button type="button" class="tb">'+icon(t[0])+t[1]+'</button>';}).join('')+
-    (ctx.mode==='B'?'<button type="button" class="tb tb-bulb bulb-btn" id="tbBulb">'+icon('lightbulb')+'תובנות<b class="bb" hidden>0</b></button>':'');
+    (ctx.mode==='B'?'<button type="button" class="tb tb-bulb bulb-btn" id="tbBulb">'+icon('lightbulb')+'תובנות<b class="bb" hidden>0</b><span class="tb-tip">לקח בטיחותי · לחצו לפרטים</span></button>':'');
   $('wBanner').innerHTML='<span class="ph">'+icon('user')+'</span><span class="nm">'+PT.name+'</span>'+
     '<span class="fld">ת.ז.<b><bdi>'+PT.id+'</bdi></b></span><span class="fld">גיל<b>78 · נקבה</b></span><span class="fld">מחלקה<b>פנימית ב׳ · חדר 12/2</b></span><span class="fld">אשפוז<b>05/11/2026</b></span><span class="fld">רופא אחראי<b>ד״ר כהן</b></span>'+
     '<span class="alg">'+icon('triangle-alert')+'רגישות: פניצילין</span>';
@@ -1305,7 +1312,6 @@ async function run(trigger){
   pipe.set(4,m.length?(crit?'<b style="color:var(--red)">נורה אדומה</b> · לקח בטיחותי לפעולה':'נורה צהובה')+' · '+m.length+' תובנות':'הנורה נשארת כבויה');
   pipe.done(4);
   paintBulb(true);
-  showCallout(m);
   if(m.length)stats.onShown(key());
 }
 var acked=false;
@@ -1332,13 +1338,13 @@ function paintBulb(fresh){
   $('agentBadge').hidden=!n;$('agentBadge').textContent=n;
   if(n){agent.classList.add('on');if(crit){agent.classList.add('crit');if(!acked)agent.classList.add('alarm');}}
   agent.setAttribute('aria-label',n?'InSight: '+n+' תובנות':'InSight: אין תובנות');
-  $('agentTip').textContent=crit?'לקח בטיחותי לפעולה הזו':n+' תובנות למסך הזה';
+  $('agentTip').textContent=crit?'לקח בטיחותי · לחצו לפרטים':n+' תובנות למסך הזה';
   var ta=$('trayAgent');if(ta){ta.classList.toggle('on',!!n);ta.classList.toggle('crit',crit);}
   // mode B – toolbar button
   var tb=$('tbBulb');
   if(tb){tb.classList.remove('on','crit','flash','alarm','spot-ring');void tb.offsetWidth;var bb=tb.querySelector('.bb');bb.hidden=!n;bb.textContent=n;if(n){tb.classList.add('on');if(crit){tb.classList.add('crit');if(!acked)tb.classList.add('alarm');}}}
   if(fresh&&n){
-    if(ctx.mode==='A'){agent.classList.add('flash','tip');setTimeout(function(){agent.classList.remove('tip');},2600);}
+    if(ctx.mode==='A'){agent.classList.add('flash','tip');if(!crit)setTimeout(function(){agent.classList.remove('tip');},2600);}
     else if(tb)tb.classList.add('flash');
   }
   if(panelOpen)renderPanel();
@@ -1483,7 +1489,7 @@ var SIM=[
   r:async function(ok){setMode('A');setPersona('nurseS',true);await goScreen('emr','dashboard');}},
  {t:'קבלת מטופלת חדשה',
   w:'מיכל פותחת את מסך הקבלה של רחל לוי, בת 78. הכלי מזהה את המסך ואת גיל המטופלת, והנורה נדלקת עם <b>תובנה אחת</b>: בגיל 78 נדרשת הערכת נפילה בתוך 4 שעות.',
-  y:'אף אחד לא חיפש כלום. הידע הגיע לבד, למסך שבו עובדים. נורה צהובה היא סימון שקט, בלי פס. פס מופיע רק ברגע בטיחותי, כמו שנראה בצעד 7.',
+  y:'אף אחד לא חיפש כלום. הידע הגיע לבד, למסך שבו עובדים. נורה צהובה היא סימון שקט. נורה אדומה ומהבהבת שמורה לרגע בטיחותי, כמו שנראה בצעד 7.',
   r:async function(ok){setMode('A');setPersona('nurseS',true);await goScreen('emr','admission');}},
  {t:'לחיצה אחת: מה בית החולים יודע',
   w:'לחיצה על הנורה פותחת תקציר, מקור וקישור למסמך המלא. התגית "גיל 78" מראה למה זה הוצג. מתחת, מקופלים, <b>הנהלים הכלליים למסך</b>: זמינים, אבל לא מדליקים את הנורה.',
@@ -1502,11 +1508,11 @@ var SIM=[
   y:'אותו מסך מציג ידע שונה לכל מטופל. זה ההבדל בין פורטל נהלים לבין ידע בהקשר.',
   r:async function(ok){setMode('A');setPersona('nurseS',true);await goScreen('lab','results');if(!ok())return;await wait(400);if(!ok())return;openPanel();}},
  {t:'רגע קריטי: אשלגן לווריד',
-  w:'כל עוד לא נבחרה תרופה, הנורה <b>כבויה</b>. מיכל בוחרת אשלגן כלורי לווריד. <b>שימו לב לשני דברים:</b><ul><li>הנורה בפינה הפכה <b>אדומה ומהבהבת</b></li><li>מתחת לשדה התרופה הופיע <b>פס עם הלקח</b></li></ul>העבודה לא נחסמת. לחיצה על הפס או על הנורה פותחת את הפרטים.',
+  w:'כל עוד לא נבחרה תרופה, הנורה <b>כבויה</b>. מיכל בוחרת אשלגן כלורי לווריד, והנורה בפינה <b>הופכת אדומה ומהבהבת</b>, עם התווית "לקח בטיחותי". היא ממשיכה להבהב עד שפותחים אותה. העבודה לא נחסמת.',
   y:'לקח מתחקיר שנכתב לפני חצי שנה מגיע בדיוק לרגע שבו האירוע עלול לחזור.',
   r:async function(ok){setMode('A');setPersona('nurseS',true);await goScreen('emr','meds');if(!ok())return;await wait(1600);if(!ok())return;
     var d=$('drug');d.classList.add('attn');d.value='kcl';ctx.drug='kcl';await run('נבחרה תרופה: אשלגן כלורי לווריד');if(!ok())return;
-    await wait(250);if(!ok())return;spotlight();}},
+    }},
  {t:'שאלה חופשית לנהלים',
   w:'מיכל רוצה לוודא את קצב המתן. היא שואלת בתוך חלון הנורה, וה-AI הפנימי עונה רק מתוך מסמכי בית החולים, עם הפניה לסעיף.',
   y:'המודל רץ על שרת בתוך הרשת הפנימית. השאלה והתשובה לא יוצאות מבית החולים.',
@@ -1517,10 +1523,10 @@ var SIM=[
   r:async function(ok){setMode('A');setPersona('nurseS',true);await goScreen('emr','meds',{drug:'kcl'});if(!ok())return;openPanel();await wait(900);if(!ok())return;
     if(stats.rated['T-031']){var el=$('pList').querySelector('[data-id="T-031"]');if(el)el.classList.add('lit');}else rate('T-031',1);}},
  {t:'הכנה לפרוצדורה',
-  w:'רחל מיועדת לניקוז נוזל פלאורלי מחר. הנורה כבויה: נוהל ה-Time-out זמין בלחיצה, אבל לא מדליק אותה. כשמיכל מסמנת שהמטופלת נוטלת נוגדי קרישה, הנורה מאדימה ו<b>מופיע פס מתחת לסימון</b>. בחלון, התחקיר עולה לראש הרשימה.',
+  w:'רחל מיועדת לניקוז נוזל פלאורלי מחר. הנורה כבויה: נוהל ה-Time-out זמין בלחיצה, אבל לא מדליק אותה. כשמיכל מסמנת שהמטופלת נוטלת נוגדי קרישה, הנורה <b>מאדימה ומהבהבת</b>. בחלון, התחקיר עולה לראש הרשימה.',
   y:'ככל שמזינים יותר מידע, ההתאמה מדויקת יותר. בלי שאף אחד יגדיר זאת ידנית בכל פעם.',
   r:async function(ok){setMode('A');setPersona('nurseS',true);await goScreen('emr','proc');if(!ok())return;await wait(900);if(!ok())return;
-    $('acLabel').classList.add('attn');$('ac').checked=true;ctx.anticoag=true;await run('סומן: נוטלת נוגדי קרישה');if(!ok())return;await wait(250);if(!ok())return;spotlight();await wait(3200);if(!ok())return;openPanel();}},
+    $('acLabel').classList.add('attn');$('ac').checked=true;ctx.anticoag=true;await run('סומן: נוטלת נוגדי קרישה');if(!ok())return;await wait(3200);if(!ok())return;openPanel();}},
  {t:'שחרור הביתה',
   w:'בהשוואת התרופות יש פערים: שינוי מינון ושורה שלא מולאה. בגלל זה, ורק בגלל זה, הנורה מציגה לקח מתחקיר אשפוז חוזר: להשוות את התרופות מהבית לתרופות בשחרור.',
   y:'השלב שבו דברים "נופלים בין הכיסאות" מקבל בדיוק את הלקחים שנכתבו עליו.',
@@ -1530,7 +1536,7 @@ var SIM=[
   y:'לאחות החוויה כמעט זהה. ההבדל הוא במה שנדרש מ-IT ומהספקים. נשווה בהמשך המצגת.',
   r:async function(ok){setMode('B');setPersona('nurseS',true);await goScreen('emr','meds',{drug:'kcl'});if(!ok())return;await wait(400);if(!ok())return;openPanel();}},
  {t:'מה ראינו',
-  w:'<ul><li>הנורה שותקת כשאין משהו ספציפי, ונדלקת רק ברגעים שחשובים</li><li>אותה נורה בשלוש מערכות שונות: שולחן עבודה, ווב ומערכת ישנה</li><li>ידע לפי ההקשר: גיל, ערכי מעבדה, תרופה</li><li>אדום ופס ליד השדה רק ברגע בטיחותי אמיתי</li><li>כמות המידע לפי תפקיד וותק; בטיחות לכולם</li><li>שאלה חופשית ל-AI פנימי, עם מקור</li><li>משוב שמזין את התמונה הניהולית</li></ul>',
+  w:'<ul><li>הנורה שותקת כשאין משהו ספציפי, ונדלקת רק ברגעים שחשובים</li><li>אותה נורה בשלוש מערכות שונות: שולחן עבודה, ווב ומערכת ישנה</li><li>ידע לפי ההקשר: גיל, ערכי מעבדה, תרופה</li><li>אדום מהבהב רק ברגע בטיחותי אמיתי</li><li>כמות המידע לפי תפקיד וותק; בטיחות לכולם</li><li>שאלה חופשית ל-AI פנימי, עם מקור</li><li>משוב שמזין את התמונה הניהולית</li></ul>',
   y:'אפשר להמשיך ללחוץ חופשי בסימולציה. בשקף הבא: הכללים שמונעים רעש.',
   r:async function(ok){await goScreen(ctx.sys,ctx.scr,{drug:ctx.drug,anticoag:ctx.anticoag});}}
 ];
